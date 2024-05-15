@@ -1,0 +1,2 @@
+class Viedeo < ApplicationRecord
+end
