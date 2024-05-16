@@ -1,0 +1,18 @@
+<h1><%= @video.title %></h1>
+<%= link_to "edit", edit_video_path %>
+<%= @video.youtube_id %>
+<%= @video.title %>
+<%= @video.tags %>
+<%= @video.chapter_markers %>
+<%= @video.description_template.template %>
+<div>
+  <iframe 
+  width="560" 
+  height="315" 
+  src="https://www.youtube.com/embed/<%= @video.youtube_id %>" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  referrerpolicy="strict-origin-when-cross-origin" 
+  allowfullscreen></iframe>
+</div>

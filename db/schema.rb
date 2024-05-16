@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_15_125157) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_16_011202) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_15_125157) do
     t.index ["video_id"], name: "index_video_presenters_on_video_id"
   end
 
+  create_table "video_resources", force: :cascade do |t|
+    t.string "url"
+    t.string "title"
+    t.bigint "video_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["video_id"], name: "index_video_resources_on_video_id"
+  end
+
   create_table "videos", force: :cascade do |t|
     t.string "youtube_id", null: false
     t.string "title", null: false
@@ -51,17 +60,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_15_125157) do
     t.index ["youtube_id"], name: "index_videos_on_youtube_id", unique: true
   end
 
-  create_table "viedeo_resources", force: :cascade do |t|
-    t.string "url"
-    t.string "title"
-    t.bigint "video_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["video_id"], name: "index_viedeo_resources_on_video_id"
-  end
-
   add_foreign_key "video_presenters", "presenters"
   add_foreign_key "video_presenters", "videos"
+  add_foreign_key "video_resources", "videos"
   add_foreign_key "videos", "description_templates"
-  add_foreign_key "viedeo_resources", "videos"
 end

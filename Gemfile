@@ -50,6 +50,8 @@ group :development, :test do
 end
 
 group :development do
+  # TODO: learn how to use this gem.
+  gem 'annotate'
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
